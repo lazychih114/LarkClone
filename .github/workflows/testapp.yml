@@ -30,11 +30,11 @@ jobs:
     
     - name: testMessengerTab
       run: |
-        bazel test //LarkCloneTests/MessengerTabTest:MessengerTabTest --test_output=errors || echo "Tests Messenger failed"
+        bazel test //LarkCloneTests/MessengerTabTest:MessengerTabTest
     
     - name: testMailTab
       run: |
-        bazel test //LarkCloneTests/MailTabTest:MailTabTest --test_output=errors || echo "Tests Mail failed"
+        bazel test //LarkCloneTests/MailTabTest:MailTabTest
 
 
 
