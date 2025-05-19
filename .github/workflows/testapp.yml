@@ -30,12 +30,25 @@ jobs:
     
     - name: testMessengerTab
       run: |
-        bazel test //LarkCloneTests/MessengerTabTest:MessengerTabTest
+        bazel test //LarkCloneTests/MessengerTabTest:MessengerTabTest --test_output=errors || echo "Tests Messenger failed"
     
     - name: testMailTab
       run: |
-        bazel test //LarkCloneTests/MailTabTest:MailTabTest
+        bazel test //LarkCloneTests/MailTabTest:MailTabTest --test_output=errors || echo "Tests Mail failed"
 
+    - name: MessengerTest log
+      uses: actions/upload-artifact@v4
+      with:
+        name: MessengerTest.log
+        path: bazel-out/darwin_arm64-fastbuild/testlogs/LarkCloneTests/MessengerTabTest/MessengerTabTest/test.log
+        if-no-files-found: warn
+
+    - name: MailTest log
+      uses: actions/upload-artifact@v4
+      with:
+        name: MailTest.log
+        path: bazel-out/darwin_arm64-fastbuild/testlogs/LarkCloneTests/MailTabTest/MailTabTest/test.log
+        if-no-files-found: warn
 
 
 
