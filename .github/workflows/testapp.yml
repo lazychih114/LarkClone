@@ -27,6 +27,9 @@ jobs:
         xcrun --sdk iphoneos --show-sdk-version
         xcrun --sdk iphoneos --show-sdk-path
         bazel version
+        xcrun simctl list
+        xcrun simctl create "New-iPhone 6s Plus-18.3" "iPhone 6s Plus" "iOS 18.3"
+
     
     - name: testMessengerTab
       run: |
