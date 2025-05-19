@@ -28,6 +28,11 @@ jobs:
         xcrun --sdk iphoneos --show-sdk-path
         bazel version
         xcrun simctl boot 899262C6-E5C3-4BE6-A728-AC9ADC2AB91C
+        devices=$(xcrun simctl list devices)
+        DEVICE_UDID=$(echo "$devices" | grep "iOS 18.4" -A 10 | grep "iPhone 16 Pro" | grep -v "Temp" | head -n 1 | awk '{print $4}' | tr -d '()')
+
+        echo "Devices: $DEVICE_UDID"
+        xcrun simctl boot "$DEVICE_UDID"
 
     
     - name: testMessengerTab
